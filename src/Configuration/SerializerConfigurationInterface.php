@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TechDivision\Import\Serializer\ConfigurationAwareSerializerInterface
+ * TechDivision\Import\Serializer\Configuration\SerializerConfigurationInterface
  *
  * NOTICE OF LICENSE
  *
@@ -18,12 +18,10 @@
  * @link      http://www.techdivision.com
  */
 
-namespace TechDivision\Import\Serializer;
-
-use TechDivision\Import\Serializer\Configuration\SerializerConfigurationInterface;
+namespace TechDivision\Import\Serializer\Configuration;
 
 /**
- * Interface for configuration aware serializer implementations.
+ * The interface for serializer configuration implementations.
  *
  * @author    Tim Wagner <t.wagner@techdivision.com>
  * @copyright 2021 TechDivision GmbH <info@techdivision.com>
@@ -31,15 +29,6 @@ use TechDivision\Import\Serializer\Configuration\SerializerConfigurationInterfac
  * @link      https://github.com/techdivision/import-serializer
  * @link      http://www.techdivision.com
  */
-interface ConfigurationAwareSerializerInterface extends SerializerInterface
+interface SerializerConfigurationInterface
 {
-
-    /**
-     * Passes the configuration and initializes the serializer.
-     *
-     * @param \TechDivision\Import\Serializer\Configuration\SerializerConfigurationInterface $configuration The configuration
-     *
-     * @return void
-     */
-    public function init(SerializerConfigurationInterface $configuration);
 }

@@ -73,11 +73,4 @@ interface SerializerInterface
      * @return array The unserialized values
      */
     public function unserialize($serialized = null, $delimiter = null);
-
-    /**
-     * Returns the configuration to un-/serialize the additional attributes.
-     *
-     * @return \TechDivision\Import\Serializer\Configuration\ConfigurationInterface The configuration
-     */
-    public function getConfiguration();
 }
