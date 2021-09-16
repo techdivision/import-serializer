@@ -1,11 +1,11 @@
 {
     "name": "techdivision/import-serializer",
     "description": "Pacemaker library providing interfaces for Magento 2 import serializer functionality",
-    "license": "OSL-3.0",
+    "license": "MIT",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.1.0"
+        "php": ">=7.2.0"
     },
     "require-dev": {
         "doctrine/dbal": "2.5.*",
