@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TechDivision\Import\Serializers\CategorySerializerInterface
+ * TechDivision\Import\Serializer\CategorySerializerInterface
  *
  * PHP version 7
  *

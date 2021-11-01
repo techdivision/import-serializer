@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TechDivision\Import\Serializers\AdditionalAttributeSerializerInterface
+ * TechDivision\Import\Serializer\AdditionalAttributeSerializerInterface
  *
  * PHP version 7
  *
