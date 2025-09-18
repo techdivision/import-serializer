@@ -46,7 +46,7 @@ interface SerializerInterface
      *
      * @return string|null The compatected value
      */
-    public function implode(array $value = null, $delimiter = null);
+    public function implode(?array $value = null, $delimiter = null);
 
     /**
      * Serializes the elements of the passed array.
@@ -56,7 +56,7 @@ interface SerializerInterface
      *
      * @return string The serialized array
      */
-    public function serialize(array $unserialized = null, $delimiter = null);
+    public function serialize(?array $unserialized = null, $delimiter = null);
 
     /**
      * Unserializes the elements of the passed string.
