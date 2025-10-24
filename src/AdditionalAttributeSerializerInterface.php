@@ -35,7 +35,7 @@ interface AdditionalAttributeSerializerInterface extends SerializerInterface
      *
      * @return array The array with the denormalized attribute values
      */
-    public function denormalize(string $value = null, bool $unpack = true) : array;
+    public function denormalize(?string $value = null, bool $unpack = true) : array;
 
     /**
      * Normalizes the category path in a standard representation.
