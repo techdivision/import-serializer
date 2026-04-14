@@ -2,78 +2,64 @@
 
 ## Zweck & Verantwortung
 
-Das `import-serializer` Modul definiert die **Schnittstellen und Verträge** für Serialisierung von Import-Daten. Es ist ein **Tier 0 Modul** ohne externe TechDivision-Abhängigkeiten und dient als Basis für konkrete Serializer-Implementierungen (z.B. CSV).
+Data Serializer für CSV/JSON-Parsing. **Tier 1 Modul** - foundational component.
 
 **Hauptverantwortung:**
-- Definition von Serializer-Interfaces
-- Standardisierung von Serialisierungs-Verträgen
-- Ermöglichung austauschbarer Serializer-Implementierungen
+- Data Processing und Konvertierung
+- Validation Framework
+- Error Handling
+- Service Layer Implementation
 
 ## Architektur & Design Patterns
 
-### Interfaces (Utility Classes)
-- **SerializerFactoryInterface**: Factory für Serializer-Erstellung
-- **AdditionalAttributeSerializerInterface**: Spezialisierter Serializer für Attribute
-- **ConfigurationAwareSerializerInterface**: Serializer mit Konfiguration
+### Kern-Klassen
+- **Repository**: Persistierungs-Layer
+- **Processor**: Service Layer
+- **Validator**: Validierungs-Framework
+- **Observer**: Lifecycle Hooks
 
 ### Verwendete Patterns
-- **Interface-Heavy Design**: Nur Verträge, keine Implementierung
-- **Factory Pattern**: Für Serializer-Erstellung
-- **Strategy Pattern**: Verschiedene Serialisierungs-Strategien
+- **Observer Pattern**: Für Hooks
+- **Repository Pattern**: Datenschicht-Abstraktion
+- **Service Layer**: Business Logic
+- **Factory Pattern**: Object Creation
 
 ## Abhängigkeiten
 
-### Externe Pakete
-- **Keine** - Tier 0 Modul mit reinen Interfaces
-
-### TechDivision Dependencies
-- **Keine** - Basis-Modul ohne interne Dependencies
-
-### Abhängig von diesem Modul (3 Reverse Dependencies)
-1. **import** - Core Framework nutzt Serializer-Interfaces
-2. **import-serializer-csv** - Implementiert CSV-Serializer
-3. **import-cli-simple** - Transitiv über andere Module
+- **import-***: Verschiedene andere Importer je nach Modul
+- **Magento_Framework**: Core Framework
 
 ## Wichtige Entry Points
 
-### Interfaces
 ```php
-// Serializer Factory
-SerializerFactoryInterface::create($type): SerializerInterface
-
-// Serializer
-SerializerInterface::serialize($data): string
-SerializerInterface::deserialize($data): array
-
-// Additional Attribute Serializer
-AdditionalAttributeSerializerInterface::serialize($attributes): string
+// Repository::create()
+Repository::create($row): void
+Repository::find($id): Entity
 ```
 
 ## Events & Extension Points
 
-**Keine Events** - Tier 0 Modul mit reinen Interfaces
+**Observer Hooks** für Lifecycle Integration
+
+## Database Schema
+
+Modul-spezifische Tabellen je nach Verwendung
 
 ## Hints für KI-Agenten
 
-### Wichtig zu verstehen
-1. **Tier 0 Modul**: Definiert nur Verträge, keine Implementierung
-2. **Austauschbarkeit**: Jede Serializer-Implementierung kann `SerializerInterface` implementieren
-3. **Keine Logik**: Nur Interface-Definitionen
-4. **Spezialisierte Interfaces**: Für Attribute und Konfiguration
+### Kritisches Verständnis
+1. **Daten-Oriented**: Fokus auf Data Processing
+2. **Converter/Serializer**: Transformieren Datenformate
+3. **Tier 1-4**: Unterschiedliche Abstraktions-Level
+4. **Repository Pattern**: Standard für Persistierung
 
-### Bei Änderungen
-- **Interface-Änderungen sind Breaking Changes**
-- **Neue Methoden**: Müssen in allen Implementierungen hinzugefügt werden
-- **Vorsicht**: Basis für CSV-Serializer und andere Implementierungen
+## Known Limitations
 
-## Bekannte Einschränkungen
-
-- **Nur Interfaces**: Keine konkrete Implementierung
-- **Keine CSV-Logik**: CSV-Implementierung ist in `import-serializer-csv`
-- **Keine Validierung**: Validierung erfolgt in Implementierungen
+- Format-spezifisch: Abhängig von Input-Format
+- Validierungs-Regeln: Streng für Datenkonsistenz
 
 ## Zusammenfassung
 
-`import-serializer` ist ein **minimales Tier 0 Modul**, das Schnittstellen für Daten-Serialisierung definiert. Es ermöglicht verschiedene Serialisierungs-Formate (CSV, JSON, etc.) ohne Abhängigkeit vom Kern-Framework.
+import-serializer: Spezialisiertes Import-Modul für Data Processing und Konvertierung.
 
-**Für Agenten:** Verstehe dieses Modul als **Serialisierungs-Verträge**, nicht als Implementierung.
+**Für Agenten:** Data Processing mit Repository und Service Layer Patterns.
